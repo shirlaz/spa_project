@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../js/main.js"></script>
+    <script src="../js/login.js"></script>
+    <script src="../js/posts.js"></script>
+    <script src="../js/single_post.js"></script>
+    <script src="../js/todos.js"></script>
+    <link rel="stylesheet" href="../css/main.css">
+</head>
+
+<body>
+    <section class="forms-section">
+        <h1 class="section-title">Shira's & Esti's Project</h1>
+
+        <div class="page active" id="SignUpLogin">
+            <div class="forms">
+                <div id="wrapper_login" class="form-wrapper is-active">
+                    <button type="button" class="switcher switcher-login">
+                        Log in
+                        <span class="underline"></span>
+                    </button>
+                    <div class="form form-login">
+                        <form onSubmit="LogIn(); return false;">
+                            <fieldset>
+                                <legend>Please, enter your email and password for login.</legend>
+                                <div class="input-block">
+                                    <label for="log-email">E-Mail Address</label>
+                                    <input id="log-email" type="email" required>
+
+                                    <label for="log-pass">Password</label>
+                                    <input id="log-pass" type="password" required>
+                                </div>
+
+
+                                <button id="log-in-btn" class="btn-login" value="Submit">Log In</button>
+                                <p class="small-link" align="center" onclick="gotoSignUp();">didn't sign up yet? click
+                                    <u>here</u> to sign up
+                                <p class="small-link" align="center" onclick="loginguest();"><u>Login as a guest</u>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+                <div id="wrapper_SignUp" class="form-wrapper">
+                    <button type="button" class="switcher switcher-signup">
+                        Sign Up
+                        <span class="underline"></span>
+                    </button>
+                    <div class="form form-signup">
+                        <form onSubmit="signUp(); return false;">
+                            <fieldset>
+                                <legend>Please, enter your email, password and password confirmation for sign up.
+                                </legend>
+                                <div class="input-block">
+                                    <label for="Fname">First Name</label>
+                                    <input id="Fname" type="text" required>
+                                    <label for="Lname">Last Name</label>
+                                    <input id="Lname" type="text" required>
+                                    <label for="Gender">Gender</label>
+                                    <select id="Gender" type="text" required>
+                                        <option value="" selected></option>
+                                        <option value="female">female</option>
+                                        <option value="male">male</option>
+                                    </select>
+                                    <label for="signup-email">E-Mail Address</label>
+                                    <input id="signup-email" type="email" required>
+
+                                    <label for="signup-password">Password</label>
+                                    <input id="signup-password" type="password" required>
+
+                                    <button id="SignUpBtn" class="btn-signup" value="Submit">Sign In</button>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="Home" class="page">
+
+            <nav>
+
+                <ol>
+
+                    <table padding="10px">
+                        <tr>
+                            <td colspan=3>
+                                <div id="greeting" class="greeting"> </div>
+                            </td>
+                            <td align="right">
+                                <div class="small-link" style="color: #fbfdff;" onclick="logout()"><u>Logout</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td> <button type="button" data-target="main" class="nav-link">MAIN</a></td>
+                            <td id="btnlinktodo"> <button type="button" data-target="todos" class="nav-link">TODOS</a>
+                            </td>
+                            <td> <button type="button" data-target="posts" class="nav-link">POSTS</a></td>
+                            <td> <button type="button" data-target="about" class="nav-link">about</a></td>
+                        </tr>
+                    </table>
+
+                </ol>
+            </nav>
+            <div class="in-page active" id="main">
+                <form class="in-form">
+                    <h1>Main Page</h1>
+                    This is the main page of our beautiful site. <br>
+                    Please go throw the menu and see what we built. <br>
+                    We hope you enjoy our site and we will see you again. <br> <br>
+                    THANK YOU! <br>
+                    Shira & Esti .
+                </form>
+            </div>
+
+            <div class="in-page" id="posts">
+                <form class="in-form">
+                    <h1>Posts</h1>
+
+                    <div class="title">
+                        <i class="fas fa-pencil-alt"></i>
+                        <h2> Add A Post</h2>
+                    </div>
+
+                    <div class="input-block">
+                        <input type="text" id="title" placeholder="title">
+                        <input type="text" id="body" placeholder="body">
+                    </div>
+
+                    <button type="button" id="create-post" class="btn-inpage">save post </button>
+
+                    <button type="button" id="show-Posts" class="btn-inpage">view posts</button>
+                    <ul id="post-data">
+                </form>
+            </div>
+
+            <div class="in-page" id="todos">
+
+                <form class="in-form">
+                    <h2>To Do List</h2>
+                    <ul id="todo-data"></ul>
+                    <button type="button" id="AddNewTask" class="btn-inpage">Add New Task</button>
+
+                    <!-- The Modal -->
+                    <div id="myModal" class="modal">
+                        <!-- Modal content -->
+                        <div class="modal-content">
+                            <span class="close">&times;</span>
+                            <div class="input-block">
+                                <form>
+                                    <input type="text" id="do-id" style="display: none;">
+                                    <input type="text" id="do-title" placeholder="Task Title" required>
+                                    <input type="date" id="do-date" placeholder="Due Date" required>
+
+                                    <select id="do-status" type="text" required>
+                                        <option value="pending" selected>pending</option>
+                                        <option value="completed">completed</option>
+                                    </select>
+                                    <button type="button" id="create-todo" class="btn-inpage">Add Task</button>
+                                    <button type="button" id="update-todo" class="btn-inpage"
+                                        style="display: none;">Update Task</button>
+
+                                    <button type="button" id="delete-todo" class="btn-inpage"
+                                        style="display: none;">Delete Task</button>
+
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="in-page" id="single_post">
+                <form class="in-form">
+                    <div id="post-title"></div>
+                    <div id="post-username"></div>
+                    <br>
+                    <div id="post-body"></div>
+                    <br>
+                    <div id="post-comments"></div>
+                    <button type="button" id="add-comment" class="btn-inpage">Add Comment </button>
+                    <div id="addcomment" class="modal">
+                        <div class="modal-content">
+                            <span class="close" id="close-commment">&times;</span>
+                            <div class="input-block">
+                                <input type="text" id="comment-text">
+                            </div>
+
+                            <button type="button" id="save-comment" class="btn-inpage">save comment </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="in-page" id="about">
+                <form class="in-form">
+                    <h1>About This Site</h1>
+                    This site was edited by Shira Lezerovich and Esti Radunsky.
+                    <br> All rights reserved. <br><br>
+                    <img src="../img/shira.png" / width="100px">
+                    Shira Lezerovich.<br><br>
+
+                    <img src="../img/esti.png" / width="100px">
+                    Esti Radunski.<br><br>
+                </form>
+            </div>
+        </div>
+
+    </section>
+</body>
+
+</html>
